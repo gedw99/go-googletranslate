@@ -19,30 +19,30 @@ Here's an example of how to use the package to translate text:
 package main
 
 import (
-	"fmt"
+    "fmt"
 
-	"github.com/firattamur/go-googletranslate/translator"
+    "github.com/firattamur/go-googletranslate/translator"
 )
 
 func main() {
 
-	text := "Merhaba Dünya!"
+    text := "Merhaba Dünya!"
 
-	googleTranslator, err := translator.NewDefaultGoogleTranslate()
+    googleTranslator, err := translator.NewDefaultGoogleTranslate()
 
     if err != nil {
         fmt.Printf("Error creating translator: %v", err)
         return
     }
 
-	translatedText, err := googleTranslator.Translate(text, translator.TURKISH, translator.ENGLISH)
+    translatedText, err := googleTranslator.Translate(text, translator.TURKISH, translator.ENGLISH)
 
-	if err != nil {
-		fmt.Printf("Error translating text: %v", err)
-		return
-	}
+    if err != nil {
+        fmt.Printf("Error translating text: %v", err)
+        return
+    }
 
-	fmt.Printf("Original text   : %s\nTranslated text : %s\n", text, translatedText)
+    fmt.Printf("Original text   : %s\nTranslated text : %s\n", text, translatedText)
 
     // Output:
     // Original text   : Merhaba Dünya!
