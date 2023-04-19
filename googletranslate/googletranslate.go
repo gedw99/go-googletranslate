@@ -3,11 +3,12 @@ package googletranslate
 import (
 	"encoding/json"
 	"fmt"
-	"go-googletranslate/filecache"
-	"go-googletranslate/languages"
 	"io/ioutil"
 	"net/http"
 	"net/url"
+
+	"github.com/firattamur/go-googletranslate/filecache"
+	"github.com/firattamur/go-googletranslate/languages"
 )
 
 type GoogleTranslate struct {

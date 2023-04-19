@@ -1,8 +1,8 @@
 package translator
 
 import (
-	"go-googletranslate/googletranslate"
-	"go-googletranslate/translate"
+	"github.com/firattamur/go-googletranslate/googletranslate"
+	"github.com/firattamur/go-googletranslate/translate"
 )
 
 const (

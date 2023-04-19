@@ -1,6 +1,6 @@
 package translator
 
-import "go-googletranslate/languages"
+import "github.com/firattamur/go-googletranslate/languages"
 
 type Language = languages.LanguageCode
 

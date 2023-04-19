@@ -1,7 +1,7 @@
 package translate
 
 import (
-	"go-googletranslate/languages"
+	"github.com/firattamur/go-googletranslate/languages"
 )
 
 type Translator interface {

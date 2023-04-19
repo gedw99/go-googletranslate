@@ -2,22 +2,28 @@ package main
 
 import (
 	"fmt"
-	"go-googletranslate/translator"
+
+	"github.com/firattamur/go-googletranslate/translator"
 )
 
 func main() {
 
-	t, err := translator.NewDefaultGoogleTranslate()
+	text := "Merhaba Dünya!"
+
+	googleTranslator, err := translator.NewDefaultGoogleTranslate()
 
 	if err != nil {
-		panic(err)
+		fmt.Printf("Error creating translator: %v", err)
+		return
 	}
 
-	translated, err := t.Translate("Merhaba Dünya!", translator.TURKISH, translator.ENGLISH)
+	translatedText, err := googleTranslator.Translate(text, translator.TURKISH, translator.ENGLISH)
+
 	if err != nil {
-		panic(err)
+		fmt.Printf("Error translating text: %v", err)
+		return
 	}
 
-	fmt.Println(translated)
+	fmt.Printf("Original text   : %s\nTranslated text : %s\n", text, translatedText)
 
 }
