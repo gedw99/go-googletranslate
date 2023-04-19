@@ -21,7 +21,7 @@ package main
 import (
     "fmt"
 
-    "github.com/firattamur/go-googletranslate/translator"
+   translator "github.com/firattamur/go-googletranslate"
 )
 
 func main() {
@@ -61,7 +61,7 @@ package main
 import (
     "fmt"
 
-    "github.com/firattamur/go-googletranslate/translator"
+    translator "github.com/firattamur/go-googletranslate"
 )
 
 func main() {

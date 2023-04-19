@@ -3,14 +3,14 @@ package main
 import (
 	"fmt"
 
-	"github.com/firattamur/go-googletranslate/translator"
+	translator "github.com/firattamur/go-googletranslate/googletranslate"
 )
 
 func main() {
 
 	text := "Merhaba Dünya!"
 
-	googleTranslator, err := translator.NewDefaultGoogleTranslate()
+	googleTranslator, err := translator.NewDefaultGoogleTranslator()
 
 	if err != nil {
 		fmt.Printf("Error creating translator: %v", err)

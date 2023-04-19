@@ -6,26 +6,23 @@ import (
 	"io/ioutil"
 	"net/http"
 	"net/url"
-
-	"github.com/firattamur/go-googletranslate/filecache"
-	"github.com/firattamur/go-googletranslate/languages"
 )
 
 type GoogleTranslate struct {
-	Cache *filecache.FileCache
+	Cache *FileCache
 }
 
 const unofficialAPIURL = "https://translate.googleapis.com/translate_a/single?client=gtx&sl=%s&tl=%s&dt=t&q=%s"
 
 func NewGoogleTranslate(cacheFileName string, cacheMaxSize int) (*GoogleTranslate, error) {
-	cache, err := filecache.NewFileCache(cacheFileName, cacheMaxSize)
+	cache, err := NewFileCache(cacheFileName, cacheMaxSize)
 	if err != nil {
 		return nil, err
 	}
 	return &GoogleTranslate{cache}, nil
 }
 
-func (gt *GoogleTranslate) Translate(text string, sourceLanguage languages.LanguageCode, targetLanguage languages.LanguageCode) (string, error) {
+func (gt *GoogleTranslate) Translate(text string, sourceLanguage LanguageCode, targetLanguage LanguageCode) (string, error) {
 
 	if translatedText, ok := gt.GetFromCache(text, sourceLanguage, targetLanguage); ok {
 		return translatedText, nil
@@ -68,12 +65,12 @@ func (gt *GoogleTranslate) Translate(text string, sourceLanguage languages.Langu
 
 }
 
-func (gt *GoogleTranslate) GetFromCache(text string, sourceLanguage languages.LanguageCode, targetLanguage languages.LanguageCode) (string, bool) {
+func (gt *GoogleTranslate) GetFromCache(text string, sourceLanguage LanguageCode, targetLanguage LanguageCode) (string, bool) {
 	key := fmt.Sprintf("%s-%s-%s", text, sourceLanguage, targetLanguage)
 	return gt.Cache.Get(key)
 }
 
-func (gt *GoogleTranslate) SetToCache(text, translatedText string, sourceLanguage languages.LanguageCode, targetLanguage languages.LanguageCode) error {
+func (gt *GoogleTranslate) SetToCache(text, translatedText string, sourceLanguage LanguageCode, targetLanguage LanguageCode) error {
 	key := fmt.Sprintf("%s-%s-%s", text, sourceLanguage, targetLanguage)
 	return gt.Cache.Set(key, translatedText)
 }
